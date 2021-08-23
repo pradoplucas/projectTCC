@@ -1,13 +1,19 @@
 const multer = require('multer');
 const fs = require('fs');
+const path = require('path');
 
 module.exports = multer({
 	storage: multer.diskStorage({
 		destination: (req, file, cb) => {
-			var dir = 'uploads/newCerts/' + req.user._id.toString();
+			const dir = path.join(
+				process.cwd(),
+				'uploads',
+				'newCerts',
+				req.user._id.toString()
+			);
 
 			if (!fs.existsSync(dir)) {
-				fs.mkdirSync(dir);
+				fs.mkdirSync(dir, { recursive: true });
 			}
 			cb(null, dir);
 		},

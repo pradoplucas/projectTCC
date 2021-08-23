@@ -194,23 +194,28 @@ module.exports = {
 							let codeold = oneCert.code;
 							oneCert.code = req.file.filename;
 
-							let pathFolder =
-								'uploads/newCerts/' +
-								userLog._id.toString() +
-								'/';
+							const pathFolder = path.join(
+								process.cwd(),
+								'uploads',
+								'newCerts',
+								userLog._id.toString()
+							);
 
 							fs.readdirSync(pathFolder).forEach((file) => {
 								if (file == codeold) {
-									fs.unlink(pathFolder + file, (err) => {
-										if (err) {
-											console.log('Erro:\n' + err);
-											res.end(
-												JSON.stringify({
-													message: 'Err',
-												})
-											);
+									fs.unlink(
+										path.join(pathFolder, file),
+										(err) => {
+											if (err) {
+												console.log('Erro:\n' + err);
+												res.end(
+													JSON.stringify({
+														message: 'Err',
+													})
+												);
+											}
 										}
-									});
+									);
 								}
 							});
 						}
@@ -247,7 +252,6 @@ module.exports = {
 	},
 	postInsertCert: (req, res) => {
 		multerUpload(req, res, function (err) {
-			console.log(err);
 			if (err) {
 				res.render('err', {
 					logged: true,
@@ -280,7 +284,7 @@ module.exports = {
 						req.body.activity == '[Selecione]'
 							? 'na'
 							: req.body.activity,
-					value: req.body.value,
+					value: req.body.value.length == 0 ? '0' : req.body.value,
 					ocult: true,
 					delete: true,
 				};
@@ -309,11 +313,16 @@ module.exports = {
 			else notCertCode = oneCert.code;
 		}
 
-		let pathFolder = 'uploads/newCerts/' + userLog._id.toString() + '/';
+		const pathFolder = path.join(
+			process.cwd(),
+			'uploads',
+			'newCerts',
+			userLog._id.toString()
+		);
 
 		fs.readdirSync(pathFolder).forEach((file) => {
 			if (file == notCertCode) {
-				fs.unlink(pathFolder + file, (err) => {
+				fs.unlink(path.join(pathFolder, file), (err) => {
 					if (err) {
 						console.log('Erro:\n' + err);
 						res.end(JSON.stringify({ message: 'Err' }));
