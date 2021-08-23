@@ -31,7 +31,9 @@
   <p align="center">
     Este é um projeto desenvolvido como Trabalho de Conclusão de Curso (TCC) no curso de Engenharia de Computação na Universidade Tecnológica Federal do Paraná câmpus Cornélio Procópio (UTFPR-CP)
     <br />
-    <a href="https://github.com/pradoplucas/projectTCC"><strong>Documentação »</strong></a>
+    <a href="https://certificautf.herokuapp.com/"><strong>CertificaUTF »</strong></a>
+    <br />
+    <a href="https://certificautf.herokuapp.com/">https://certificautf.herokuapp.com/</a>
     <br />
     <br />
     <a href="https://github.com/pradoplucas/projectTCC">Ver Projeto</a>
