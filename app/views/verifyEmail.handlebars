@@ -1,0 +1,56 @@
+{{> navbarOtherNot }}
+
+<div class="mastdiv">
+    <div class="container-fluid h-100">
+        <div class="row h-100 align-items-center text-center">
+            <div class="col-12 div-margin">
+                <span id="modalType" class="d-none">{{ text }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalEmail" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">E-mail verificado com sucesso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <label class="form-label">O e-mail foi verificado com sucesso</label><br>
+                <label class="form-label">Você já pode entrar na sua conta</label><br>
+            </div>
+            <div class="modal-footer">
+                <a href="/signIn"><button type="button" class="btn btn-success">Página de Login</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalFail" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Problemas ao verificar e-mail</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <label class="form-label">Houveram alguns problemas na verificação do e-mail</label><br>
+                <label class="form-label">Tente novamente mais tarde</label><br>
+                <label class="form-label">Caso os problemas persistam, entre em contato com o <a href="/about">suporte</a></label><br>
+            </div>
+            <div class="modal-footer">
+                <a href="/"><button type="button" class="btn btn-danger">Página inicial</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/ext/jquerry.js"></script>
+<script>
+    document.body.onload = () => $(document.getElementById('modalType').innerHTML).modal('show')
+</script>

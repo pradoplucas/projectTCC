@@ -1,0 +1,235 @@
+{{> navbarOtherLog }}
+
+<div class="mastdiv">
+    <div class="container-fluid h-100">
+        <div class="row h-100 align-items-center text-center">
+            <div class="col-12 div-margin">
+                <h1 class="fsc-2 mb-3">Configurações</h1>
+                
+                <div class="row justify-content-center text-center">
+                    <div class="col-11 col-sm-10 col-md-9 col-lg-8 py-3 box-custom">
+                        <div class="row justify-content-center">
+
+                            <div class="col-sm-6 pb-2">
+                                <button type="button" class="btn btn-outline-light w-100 box-config" data-bs-toggle="modal" data-bs-target="#modalPerfil">
+                                    Perfil
+                                </button>
+                            </div>
+
+                            <div class="col-sm-6 pb-2">
+                                <button type="button" class="btn btn-outline-light w-100 box-config" data-bs-toggle="modal" data-bs-target="#modalNotif">
+                                    Notificação
+                                </button>
+                            </div>
+
+                            <div class="col-sm-6 pt-2">
+                                <button type="button" class="btn btn-outline-light w-100 box-config" data-bs-toggle="modal" data-bs-target="#modalSeg">
+                                    Segurança
+                                </button>
+                            </div>
+
+                            <div class="col-sm-6 pt-2">
+                                <button type="button" class="btn btn-outline-light w-100 box-config" data-bs-toggle="modal" data-bs-target="#modalTPS">
+                                    T/P/S
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal-Perfil -->
+<div class="modal fade" id="modalPerfil" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Perfil</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="floatingInputFName" placeholder="Nome" value="{{fname}}">
+                    <label for="floatingInputFName">Nome</label>
+                </div>
+        
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="floatingInputLName" placeholder="Sobrenome" value="{{lname}}">
+                    <label for="floatingInputLName">Sobrenome</label>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="form-floating">
+                            <input type="number" class="form-control form-control-sm" id="floatingInputRA" placeholder="RA" value="{{ra}}">
+                            <label for="floatingInputRA" id="labelRA">RA</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-floating">
+                            <span class="d-none" id="floatingSpanPeriod">{{period}}</span>
+                            <select class="form-select form-select-sm" id="floatingSelectPeriod">
+                                <option selected>[Selecione]</option>
+                            </select>
+                            <label id="floatingLabelPeriod" for="floatingSelectPeriod">Período</label>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <div class="form-floating">
+                            <span class="d-none" id="floatingSpanCampus">{{campus}}</span>
+                            <select class="form-select form-select-sm" id="floatingSelectCampus" disabled>
+                                <option>[Selecione]</option>
+                                <option value="CP" selected>CP</option>
+                            </select>
+                            <label for="floatingSelectCampus">Câmpus</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-floating">
+                            <span class="d-none" id="floatingSpanCourse">{{courseInit}}</span>
+                            <select class="form-select form-select-sm" id="floatingSelectCourse" disabled>
+                                <option selected>[Selecione]</option>
+                                <option value="ADS">Análise e Desenvolvimento de Sistemas</option>
+                                <option value="ECP">Engenharia de Computação</option>
+                                <option value="ECA">Engenharia de Controle e Automação</option>
+                                <option value="ESW">Engenharia de Software</option>
+                                <option value="ELE">Engenharia Elétrica</option>
+                                <option value="ELT">Engenharia Eletrônica</option>
+                                <option value="EMC">Engenharia Mecânica</option>
+                                <option value="LMT">Licenciatura em Matemática</option>
+                            </select>
+                            <label for="floatingSelectCourse">Curso</label>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center mt-2 mb-1 d-none" id="resUpProfile"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="upProfile()">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal-Notificação -->
+<div class="modal fade" id="modalNotif" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Notificação</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-check form-switch mb-2">
+                    <input class="form-check-input" type="checkbox" id="sliderRecomend" {{configs/recomend}}>
+                    <label class="form-check-label" for="sliderRecomend">Novas recomendações</label>
+                </div>
+
+                <div class="form-check form-switch mb-2">
+                    <input class="form-check-input" type="checkbox" id="sliderCerts" {{configs/certs}}>
+                    <label class="form-check-label" for="sliderCerts">Novos certificados</label>
+                </div>
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="sliderFunc" {{configs/func}}>
+                    <label class="form-check-label" for="sliderFunc">Novas funcionalidades</label>
+                </div>
+
+                <p class="text-center mt-2 mb-1 d-none" id="resUpNotif"></p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="upNotif()">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal-Segurança -->
+<div class="modal fade" id="modalSeg" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Segurança</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="floatingInputDName" placeholder="Nome vinculado" value="{{dname}}" disabled>
+                    <label for="floatingInputDName">Nome vinculado</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control form-control-sm" id="floatingInputEmail" placeholder="E-mail" value="{{email}}" disabled>
+                    <label for="floatingInputEmail">E-mail</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control form-control-sm" id="floatingInputUsername" placeholder="Username" onkeyup="usernameIsValid(this.value)" value="{{username}}">
+                    <label for="floatingInputUsername" id="labelUsername">Username</label>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-10 pe-0">
+                        <div class="form-floating">
+                            <input type="password" class="form-control form-control-sm" id="floatingInputPassword" placeholder="Senha" onkeyup="passwordIsValid(this.value)" disabled>
+                            <label for="floatingInputPassword" id="labelPassword">Senha</label>
+                        </div>
+                    </div>
+
+                    <div class="col-2 ps-0">
+                        <button class="btn btn-outline-secondary w-100 h-100 eye-border" type="button" id="buttonEye">
+                            <i class="fas fa-eye-slash" id="iconEye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="sliderEdit" onclick="editProfile()">
+                    <label class="form-check-label" for="sliderEdit">Editar senha</label>
+                </div>
+                <p class="text-center mt-2 mb-1 d-none" id="resUpSeg"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="upSeg()">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal-T/P/S -->
+<div class="modal fade" id="modalTPS" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Termos, Privacidade e Segurança</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <label class="form-label small mb-2"><i class="fas fa-dot-circle mb-0 me-1 h9"></i> As informações pessoais sobre você que são salvas no servidor advém diretamente do seu registro no sistema.</label><br>
+                <label class="form-label small my-2"><i class="fas fa-dot-circle mb-0 me-1 h9"></i>Cookies são utilizados para lhe conceder acesso futuro sem que precise digitar suas credenciais novamente.</label><br>
+                <label class="form-label small my-2"><i class="fas fa-dot-circle mb-0 me-1 h9"></i>A sua senha é criptografada e salva no banco de dados, não sendo possível acessá-la via texto pleno, garantindo uma maior segurança.</label><br>
+                <label class="form-label small my-2"><i class="fas fa-dot-circle mb-0 me-1 h9"></i>A hospedagem, o domínio e o banco de dados são realizados em serviços tercerizadas, sendo que suas reputações são altas e confiáveis.</label><br>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="/js/ext/jquerry.js"></script>
+<script src="/js/configs.js"></script>

@@ -1,0 +1,147 @@
+{{> navbarOtherNot }}
+
+<div class="mastdiv">
+    <div class="container-fluid h-100">
+        <div class="row h-100 align-items-center text-center">
+            <div class="col-12 div-margin">
+                <h1 class="fsc-2 mb-3">Entrar</h1>
+
+                <div class="row justify-content-center text-center">
+                    <div class="col-10 col-sm-6 col-md-5 col-lg-4 justify-content-center box-custom mb-0">
+                        <form class="my-4 text-black" method="POST" action="/signIn">
+                            <div class="form-floating mb-3">
+                                <input name="email" type="email" class="form-control form-control-sm" id="floatingEmail" placeholder="email">
+                                <label id="labelEmail" for="floatingEmail">E-mail</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input name="password" type="password" class="form-control form-control-sm" id="floatingPassword" placeholder="senha">
+                                <label id="labelPassword" for="floatingPassword">Senha</label>
+                            </div>
+
+
+                            <a role=button class="form-text link-custom-1" id="linkSignIn" data-bs-toggle="modal" data-bs-target="#modalReset">Esqueceu a senha?</a>
+
+                            {{#if message}}
+                                <p class="text-center my-1 text-danger" data-bs-toggle="tooltip" data-bs-html="true" title="{{tooltip}}">{{message}}</p>
+                            {{/if}}
+
+                            <button type="submit" class="btn btn-dark w-100 mt-2">Entrar</button>
+                        </form>
+                    </div>
+                    <p class="text-center mx-0 mt-1 mb-4">Ainda não tem uma conta? <a href="/signUp" class="link-custom-1">Criar</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalReset" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Esqueceu a senha</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control form-control-sm" id="floatingInputEmail" placeholder="email" onkeyup="textIsValid('Email', this.value)">
+                    <label id="floatingLabelEmail" for="floatingInputEmail">E-mail</label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button onclick="resetPassword()" type="button" class="btn btn-success">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalResult" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Redefinição da senha</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <h4 class="text-center">Um link para a redefinição da senha foi enviado para o e-mail citado, caso não tenha recebido confira sua caixa de spam ou aguarde alguns minutos e repita o processo</h4>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalLoading" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Enviando E-mail</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="spinner-border text-dark" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalSuccessReset" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">E-mail enviado com sucesso</h5>
+            </div>
+            <div class="modal-body text-center">
+
+                <label class="form-label">Para redefinir a senha, um link foi enviado para seu e-mail</label><br>
+                <label class="form-label">Verifique a caixa da SPAM se necessário</label><br>
+            </div>
+            <div class="modal-footer">
+                <a href="/"><button type="button" class="btn btn-success">Página inicial</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalFailReset" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Problemas ao redefinir senha</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <label class="form-label">Houveram alguns problemas na redefinição da senha</label><br>
+                <label class="form-label">Verifique os dados e tente mais tarde</label><br>
+                <label class="form-label">Caso os problemas persistam, entre em contato com o <a href="/about">suporte</a></label><br>
+            </div>
+            <div class="modal-footer">
+                <a href="/signIn"><button type="button" class="btn btn-danger">Recarregar</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalFail" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Problemas ao fazer login</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <label class="form-label">E-mail ou senha incorretos</label><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/ext/jquerry.js"></script>
+<script src="/js/signIn.js"></script>

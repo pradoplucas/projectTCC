@@ -1,0 +1,100 @@
+{{#if logged }}
+    {{> navbarOtherLog }}
+{{else}}
+    {{> navbarOtherNot }}
+{{/if}}
+
+<div class="mastdiv">
+    <div class="container-fluid">
+        <div class="row justify-content-center text-center my-4">
+
+            <div class="col-10 col-sm-7 col-lg-5">
+
+                <div class="input-group input-group-lg">
+                    <select id="selectYear" class="form-select btn btn-dark" style="width: 25%;" onchange="selectChanged()">
+                            <option selected>Ano</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                    </select>
+
+                    <input id="inputSearchE" type="text" class="form-control text-center" placeholder="Digite um Nome" onkeyup="getEventSearch(this.value)" style="width: 75%;">
+
+                    <div class="w-100"></div>
+
+                    <ul id="ulSearch" class="overflow-auto d-none"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="divTable" class="row align-items-center justify-content-center text-center d-none">
+
+            <div class="col-sm-10">
+                <div class="row align-items-center justify-content-center text-center">
+
+                    <div class="col-sm-7 col-lg-5 col-10 mt-2">
+                        <div class="input-group">
+                            <input id="inputSearchP" type="text" class="form-control text-center" placeholder="Digite um Nome" onkeyup="personSearch(this.value)">
+                            <button class= "btn btn-dark" type="button" onclick="clearInputSearchP()">Limpar</button>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mt-4">
+                        <table class="table table-light table-hover table-bordered align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col" class="align-middle">
+
+                                        <div class="btn-group dropend">
+
+                                            <label class="btn btn-sm btn-outline-secondary" for="btnCheck">
+                                                <input type="checkbox" class="form-check-input" id="btnCheck" autocomplete="off" onchange="checkboxDownload(this.checked)">
+                                            </label>
+
+                                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <span class="visually-hidden">Toggle Dropdown</span>
+                                            </button>
+
+                                            <ul class="dropdown-menu">
+                                                <li><a role="button" class="dropdown-item" onclick="downloadFiles('select')">Baixar Selecionados</a></li>
+                                                <li><a role="button" class="dropdown-item" onclick="downloadFiles('all')">Baixar Todos</a></li>
+                                            </ul>
+                                        </div>
+
+                                    </th>
+                                    <th scope="col" class="align-middle">Ano</th>
+                                    <th scope="col" class="align-middle">Nome</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalLoading" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Preparando Download</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="spinner-border text-dark" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="/js/searchEvent.js"></script>

@@ -1,0 +1,138 @@
+<nav
+	class='navbar navbar-expand-sm navbar-custom indexPage fixed-top'
+	aria-label='Navbar Menu'
+>
+	<div class='container'>
+		<a
+			class='navbar-brand nav-custom indexPage'
+			aria-current='page'
+			href='/'
+		>
+			<i class='far fa-list-alt'></i>
+			CertificaUTF
+		</a>
+
+		<button
+			class='navbar-toggler nav-custom indexPage'
+			type='button'
+			data-bs-toggle='collapse'
+			data-bs-target='#navbarsExample03'
+		>
+			<i class='fas fa-bars'></i>
+		</button>
+
+		<div class='collapse navbar-collapse' id='navbarsExample03'>
+			<ul class='navbar-nav me-auto mb-2 mb-sm-0'>
+				<li class='nav-item'>
+					<a
+						class='nav-link nav-custom indexPage'
+						href='/index'
+					>Início</a>
+				</li>
+				<li class='nav-item'>
+					<a
+						class='nav-link nav-custom indexPage'
+						href='/myCerts'
+					>Certificados</a>
+				</li>
+				<li class='nav-item dropdown'>
+					<a
+						class='nav-link nav-custom indexPage'
+						href='#'
+						id='navbarDropdown'
+						role='button'
+						data-bs-toggle='dropdown'
+						aria-expanded='false'
+					>
+						<i class='fas fa-ellipsis-h'></i>
+					</a>
+					<ul class='dropdown-menu'>
+						<li><a
+								class='dropdown-item'
+								href='/recomend'
+							>Recomendações</a></li>
+						<li><a
+								class='dropdown-item'
+								href='/docs'
+							>Documentações</a></li>
+						<li><a
+								class='dropdown-item'
+								href='#'
+							>Estatísticas</a></li>
+					</ul>
+				</li>
+			</ul>
+
+			<ul class='navbar-nav md-auto mb-2 mb-sm-0'>
+				<li class='nav-item'>
+					<a
+						class='nav-link nav-custom indexPage'
+						href='/about'
+					>Sobre</a>
+				</li>
+
+				<li class='nav-item dropdown'>
+					<a
+						class='nav-link nav-custom indexPage'
+						href='#'
+						id='navbarDropdown'
+						role='button'
+						data-bs-toggle='dropdown'
+						data-bs-auto-close='outside'
+						aria-expanded='false'
+					>
+						<i class='far fa-bell'></i>
+						<span
+							class='d-none position-absolute translate-middle p-1 bg-danger border-light rounded-circle'
+						>
+							<span class='visually-hidden'>Notificações</span>
+						</span>
+					</a>
+					<ul
+						class='dropdown-menu dropdown-menu-end'
+						aria-labelledby='navbarDropdown'
+					>
+						{{#each notifications}}
+							<li><span class='dropdown-item'>
+									<span class='me-1 h9'>{{date}}</span>
+									<span class='ms-1 small'>{{event}}</span>
+								</span></li>
+							<li><hr class='dropdown-divider' /></li>
+						{{/each}}
+					</ul>
+				</li>
+
+				<li class='nav-item dropdown'>
+					<a
+						class='nav-link nav-custom indexPage dropdown-toggle'
+						href='#'
+						id='navbarDropdown'
+						role='button'
+						data-bs-toggle='dropdown'
+						aria-expanded='false'
+					>
+						{{#if username}}
+							{{username}}
+						{{else}}
+							Menu
+						{{/if}}
+					</a>
+					<ul
+						class='dropdown-menu dropdown-menu-end'
+						aria-labelledby='navbarDropdown'
+					>
+						<li><a
+								class='dropdown-item'
+								href='/configs'
+							>Configurações</a></li>
+						<li><a
+								class='dropdown-item'
+								href='/signOut'
+							>Sair</a></li>
+					</ul>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</nav>

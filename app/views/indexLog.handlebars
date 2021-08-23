@@ -1,0 +1,39 @@
+{{> navbarIndexLog }}
+
+<div class="mastdiv">
+    <div class="container-fluid h-100">
+        <div class="row h-100 align-items-center text-center">
+            <div class="col-12 div-margin">
+                <div class="row justify-content-center text-center">
+                    <div class="col-10">
+                        <h1 class="m-0 fsc-3">{{fullName}}</h1>
+                        <h5 class="mt-2"><span class="me-4">{{courseInit}}</span><span class="ms-4">{{period}}</span></h5>
+                        
+                        <div class="row justify-content-center text-center mt-4">
+                            <div class="col-12 col-sm-9 col-md-7 col-lg-6">
+                                <div class="progress border border-1 border-light" id="main-progress" style="height: 35px">
+                                    <div class="progress-bar progress-bar-striped bg-dark1" role="progressbar" style="width: {{groups/pg1}}%" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="Grupo 1<br>Pontuação: {{groups/g1}}<br>Min/Max: {{groups/mmg1}}">G1</div>
+                                    <div class="progress-bar progress-bar-striped bg-dark2" role="progressbar" style="width: {{groups/pg2}}%" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="Grupo 2<br>Pontuação: {{groups/g2}}<br>Min/Max: {{groups/mmg2}}">G2</div>
+                                    <div class="progress-bar progress-bar-striped bg-dark3" role="progressbar" style="width: {{groups/pg3}}%" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="Grupo 3<br>Pontuação: {{groups/g3}}<br>Min/Max: {{groups/mmg3}}">G3</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center text-center mt-4">
+                            <div class="col-12 col-sm-9 col-md-7 col-lg-6">
+
+                                <button class="btn btn-outline-light w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">
+                                    Mais informações sobre sua situação
+                                </button>
+
+                                <div class="box-custom border-1 collapse" id="collapseExample">
+                                    <p class="m-3">{{sitUser}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

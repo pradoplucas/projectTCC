@@ -1,0 +1,92 @@
+{{> navbarIndexLog }}
+
+<div class="mastdiv">
+    <div class="container-fluid h-100">
+        <div class="row justify-content-center text-center">
+            <div class="col-11 col-sm-8 py-3 mt-3 mb-0 box-custom">
+                <h5>Antes de qualquer coisa, é necessário sincronizar seu usuário com os dados de certificados já cadastrados no banco de dados. Caso encontre algum problema nessa etapa, entre em contato com o <a class="link-custom-1" href="/about">suporte.</a></h5>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-sm-7 col-lg-5 col-11 my-3">
+                <div class="input-group input-group-lg">
+                    <input id="inputSearchP" type="text" class="form-control text-center" placeholder="Digite seu Nome" onkeyup="getPersonSearch(this.value)">
+                </div>
+
+                <ul id="ulSearch" class="overflow-auto d-none"></ul>
+
+            </div>
+        </div>
+
+        <section id="divInfo" class="d-none">
+            <div class="container-fluid p-0">
+                <div class="row justify-content-center text-center">
+
+                    <div class="col-11 col-sm-10">
+
+                        <div id="infoAll" class="row justify-content-center text-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="modal fade" id="modalConfirm" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar nome</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control form-control-sm" id="floatingInputName" placeholder="nome" value="" disabled readonly>
+                    <label for="floatingInputName">Nome vinculado</label>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-floating">
+                            <select class="form-select form-select-sm" id="floatingSelectCourse" onchange="selectChanged(this.value)">
+                                <option selected>[Selecione]</option>
+                                <option value="ADS">Análise e Desenvolvimento de Sistemas</option>
+                                <option value="ECP">Engenharia de Computação</option>
+                                <option value="ECA">Engenharia de Controle e Automação</option>
+                                <option value="ESW">Engenharia de Software</option>
+                                <option value="ELE">Engenharia Elétrica</option>
+                                <option value="ELT">Engenharia Eletrônica</option>
+                                <option value="EMC">Engenharia Mecânica</option>
+                                <option value="LMT">Licenciatura em Matemática</option>
+                            </select>
+                            <label id="labelSelectCourse" for="floatingSelectCourse">Curso</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-floating">
+                            <select class="form-select form-select-sm" id="floatingSelectPeriod" aria-label="Floating label select example">
+                                <option selected>[Selecione]</option>
+                            </select>
+                            <label id="labelSelectPeriod" for="floatingSelectPeriod">Período</label>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="mt-2">Se os certificados citados anteriormente forem seus e o nome acima estiver correto, clique em confirmar abaixo, caso contrário, cancele e tente novamente.</p>
+                <p>Não clique em confirmar se algo estiver errado, pois não será possível modificar o nome posteriormente.</p>
+                <p>O sistema utiliza cookies para lhe conceder acesso futuro sem que precise digitar suas credenciais novamente, ao clicar em confirmar abaixo, você concorda com o uso de cookies.</p>
+                <p>Caso encontre algum problema, entre em contato com o <a class="link-dark" href="/about">suporte.</a></p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="saveName('modal')">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/ext/jquerry.js"></script>
+<script src="/js/indexConfig.js"></script>
