@@ -19,8 +19,7 @@ const resetPasswordRouter = require('./app/routes/resetPassword.route'); /* Impo
 
 /* Constante */
 const PORT =
-	process.env.PORT ||
-	3000; /* Define a porta na qual a aplicação vai rodar */
+	process.env.PORT || 3000; /* Define a porta na qual a aplicação vai rodar */
 
 /* Rotas */
 app.use(indexRouter); /* Adiciona ao middleware a rota / */

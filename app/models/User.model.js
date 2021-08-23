@@ -34,33 +34,27 @@ const userSchema = new Schema({
 	},
 	email: {
 		type: String,
-		required: true,
 	},
 	emailHash: {
 		type: String,
-		required: true,
 	},
 	username: {
 		type: String,
 	},
 	pwdHash: {
 		type: String,
-		required: true,
 	},
 	notifications: {
 		type: [
 			{
 				code: {
 					type: String,
-					required: true,
 				},
 				event: {
 					type: String,
-					required: true,
 				},
 				date: {
 					type: String,
-					required: true,
 				},
 			},
 		],
@@ -70,19 +64,15 @@ const userSchema = new Schema({
 			{
 				code: {
 					type: String,
-					required: true,
 				},
 				eventId: {
 					type: String,
-					required: true,
 				},
 				eventName: {
 					type: String,
-					required: true,
 				},
 				year: {
 					type: String,
-					required: true,
 				},
 				group: {
 					type: String,

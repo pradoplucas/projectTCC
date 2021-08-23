@@ -7,17 +7,33 @@ const deleteDir = require('../modules/deleteDir');
 
 module.exports = {
 	getDownloadCerts: (req, res) => {
-		console.log(req.params.userId);
-		let url = 'uploads/temp/' + req.params.userId + '/certs.zip';
+		console.log('download controller userID: ' + req.params.userId);
+		let url = path.join(
+			process.cwd(),
+			'uploads',
+			'temp',
+			req.params.userId,
+			'certs.zip'
+		);
 		res.download(url, (err) => {
 			if (err) console.log('Err Down: ' + err);
-			let pathToDir = 'uploads/temp/' + req.params.userId;
+			let pathToDir = path.join(
+				process.cwd(),
+				'uploads',
+				'temp',
+				req.params.userId
+			);
 
 			deleteDir(pathToDir);
 		});
 	},
 	getDeleteDir: (req, res) => {
-		let pathToDir = 'uploads/temp/' + req.params.userId;
+		let pathToDir = path.join(
+			process.cwd(),
+			'uploads',
+			'temp',
+			req.params.userId
+		);
 
 		deleteDir(pathToDir);
 	},

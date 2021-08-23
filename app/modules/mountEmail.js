@@ -1,7 +1,11 @@
+var urlKey = process.env.URL_LOCAL_KEY;
+if (process.env.NODE_ENV == 'production') urlKey = process.env.URL_DOMAIN_KEY;
+
+console.log('mountEmailLink: ' + urlKey);
+
 module.exports = {
 	verifyEmail: (email, emailHash) => {
-		const linkURL =
-			process.env.URL_DOMAIN_KEY + '/verifyEmail/' + emailHash.toString();
+		const linkURL = urlKey + '/verifyEmail/' + emailHash.toString();
 
 		let htmlStr = 'Olá, ' + email + '!<br><br>';
 		let textStr = 'Olá, ' + email + '!';
@@ -38,10 +42,7 @@ module.exports = {
 		};
 	},
 	resetPassword: (email, emailHash) => {
-		const linkURL =
-			process.env.URL_DOMAIN_KEY +
-			'/resetPassword/' +
-			emailHash.toString();
+		const linkURL = urlKey + '/resetPassword/' + emailHash.toString();
 
 		let htmlStr = 'Olá, ' + email + '!<br><br>';
 		let textStr = 'Olá, ' + email + '!';

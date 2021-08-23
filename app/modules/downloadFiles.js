@@ -5,16 +5,18 @@ const fs = require('fs');
 const deleteDir = require('./deleteDir');
 
 module.exports = async (userId, arrayCodes, user_id = '') => {
-	const pathToDir = 'uploads/temp/' + userId;
+	const pathToDir = path.join(process.cwd(), 'uploads', 'temp', userId);
 
 	if (fs.existsSync(pathToDir)) {
 		deleteDir(pathToDir);
 	}
 	try {
-		fs.mkdirSync(pathToDir);
-		fs.mkdirSync(path.join(pathToDir, 'files'));
+		fs.mkdirSync(pathToDir, { recursive: true });
+		fs.mkdirSync(path.join(pathToDir, 'files'), { recursive: true });
 		for (group in arrayCodes)
-			fs.mkdirSync(path.join(pathToDir, 'files', group));
+			fs.mkdirSync(path.join(pathToDir, 'files', group), {
+				recursive: true,
+			});
 	} catch (err) {
 		console.log('Err CreateDir: ' + err);
 	}

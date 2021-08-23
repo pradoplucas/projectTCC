@@ -11,7 +11,13 @@ module.exports = (arrayCodes, pathToDir, user_id = '') => {
 		arrayCodes.forEach((objCode) => {
 			if (!objCode.fromSGCE) {
 				fs.copyFile(
-					path.join('uploads', 'newCerts', user_id, objCode.code),
+					path.join(
+						process.cwd(),
+						'uploads',
+						'newCerts',
+						user_id,
+						objCode.code
+					),
 					path.join(pathToDir, objCode.code),
 					(err) => {
 						if (err) throw err;
