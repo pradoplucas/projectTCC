@@ -1,7 +1,7 @@
 module.exports = {
 	verifyEmail: (email, emailHash) => {
 		const linkURL =
-			process.env.URL_LOCAL_KEY + '/verifyEmail/' + emailHash.toString();
+			process.env.URL_DOMAIN_KEY + '/verifyEmail/' + emailHash.toString();
 
 		let htmlStr = 'Olá, ' + email + '!<br><br>';
 		let textStr = 'Olá, ' + email + '!';
@@ -39,7 +39,7 @@ module.exports = {
 	},
 	resetPassword: (email, emailHash) => {
 		const linkURL =
-			process.env.URL_LOCAL_KEY +
+			process.env.URL_DOMAIN_KEY +
 			'/resetPassword/' +
 			emailHash.toString();
 
