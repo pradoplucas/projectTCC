@@ -19,7 +19,7 @@ const resetPasswordRouter = require('./app/routes/resetPassword.route'); /* Impo
 
 /* Constante */
 const PORT =
-	process.env.PORT_SERVER_KEY ||
+	process.env.PORT ||
 	3000; /* Define a porta na qual a aplicação vai rodar */
 
 /* Rotas */
