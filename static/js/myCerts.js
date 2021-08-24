@@ -5,7 +5,7 @@ var pathPrepareToEditCert = '/prepareToEditCert/';
 var pathPrepareToInsertCert = '/prepareToInsertCert/';
 var pathEditCert = '/editCert';
 var pathInsertCert = '/insertCert';
-var pathDeleteCert = '/deleteCert';
+var pathDeleteCert = '/deleteCert/';
 var pathCertsDownload = '/myCerts/download/';
 
 var oneCourse;

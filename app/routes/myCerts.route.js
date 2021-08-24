@@ -24,7 +24,7 @@ router.get(
 	controller.getPrepareToInsertCert
 );
 router.post('/insertCert', middlewareAuth, controller.postInsertCert);
-router.get('/deleteCert:certCode', middlewareAuth, controller.getDeleteCert);
+router.get('/deleteCert/:certCode', middlewareAuth, controller.getDeleteCert);
 router.get(
 	'/myCerts/download/:arrayCodes',
 	middlewareAuth,
