@@ -42,7 +42,7 @@ module.exports = {
 					if (!resUser) {
 						new User({
 							ownerId: '',
-							emailConfirm: true,
+							emailConfirm: false,
 							toReset: false,
 							dname: '',
 							fname: '',
@@ -70,7 +70,6 @@ module.exports = {
 						})
 							.save()
 							.then(() => {
-/* 
 								transporter
 									.sendMail(bodyEmail)
 									.then((message) => {
@@ -87,9 +86,6 @@ module.exports = {
 										});
 										res.end(JSON.stringify(responseArray));
 									});
-                                     */
-                                responseArray['content'].push('Ok')
-                                res.end(JSON.stringify(responseArray))
 							})
 							.catch((err) => {
 								responseArray.type = 'err';
@@ -101,6 +97,9 @@ module.exports = {
 								res.end(JSON.stringify(responseArray));
 							});
 					} else {
+						console.log(
+							bcrypt.compareSync(pwdBody, resUser.pwdHash)
+						);
 						if (
 							!resUser.emailConfirm &&
 							bcrypt.compareSync(pwdBody, resUser.pwdHash)

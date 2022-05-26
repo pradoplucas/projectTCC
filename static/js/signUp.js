@@ -19,15 +19,15 @@ function submitButton(){
     const inputPassword = document.getElementById("floatingInputPassword");
     let labelEmail = document.getElementById("labelEmail");
     let labelPassword = document.getElementById("labelPassword");
-    let modalLoading = document.getElementById('modalLoading');
+    //let modalLoading = document.getElementById('modalLoading');
 
     if(emailIsValid(inputEmail.value) && passwordIsValid(inputPassword.value)){ 
         let dataToSend = inputEmail.name + '=' + inputEmail.value + '&' + inputPassword.name + '=' + inputPassword.value;
 
-        modalLoading.classList.add('show','d-block');
+        //modalLoading.classList.add('show','d-block');
 
         requestPostAjax(pathSignUp, dataToSend).then((resData) => {
-            modalLoading.classList.remove('show','d-block');
+            //modalLoading.classList.remove('show','d-block');
             if(resData.type == "err"){
                 resData.content.forEach(value => {
                     if(value.type == "email") {
@@ -47,7 +47,7 @@ function submitButton(){
                 $('#modalSuccess').modal('show');
             }
         }).catch((err) => {
-            modalLoading.classList.remove('show','d-block');
+            //modalLoading.classList.remove('show','d-block');
             $('#modalFail').modal('show');
         });
     }

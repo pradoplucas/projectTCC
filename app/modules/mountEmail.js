@@ -1,8 +1,6 @@
 var urlKey = process.env.URL_LOCAL_KEY;
 if (process.env.NODE_ENV == 'production') urlKey = process.env.URL_DOMAIN_KEY;
 
-console.log('mountEmailLink: ' + urlKey);
-
 module.exports = {
 	verifyEmail: (email, emailHash) => {
 		const linkURL = urlKey + '/verifyEmail/' + emailHash.toString();
