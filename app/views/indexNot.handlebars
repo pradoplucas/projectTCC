@@ -1,8 +1,11 @@
+{{!-- 
 {{#if logged }}
     {{> navbarIndexLog }}
 {{else}}
-    {{> navbarIndexNot }}
 {{/if}}
+ --}}
+
+{{> navbarIndexNot }}
 
 <div class="mastdiv">
     <div class="container-fluid h-100">
@@ -10,15 +13,16 @@
             <div class="col-12 div-margin">
                 <div class="row justify-content-center text-center">
                     <div class="col-10">
-                        <h6 class="m-0 fsc-1">CertificaUTF</h6>
+                        <h6 class="m-0 fsc-1">Certificados</h6>
                     </div>
                     <div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-2">
-                        <h5>O jeito fácil de encontrar os certificados gerados dentro da UTFPR-CP</h5>
+                        {{!-- <h5>O jeito fácil de encontrar os certificados gerados dentro da UTFPR-CP</h5> --}}
+                        <h5>Um jeito mais fácil de encontrar certificados gerados dentro da UTFPR-CP</h5>
                     </div>
                     <div class="w-100"></div>
                     <div class="col-10 col-sm-10">
-                        <a href="/searchPerson"><button type="button" class="btn btn-outline-light me-2">Por nome</button></a>
-                        <a href="/searchEvent"><button type="button" class="btn btn-outline-light md-2">Por evento</button></a>
+                        <a href="/searchPerson"><button type="button" class="btn btn-outline-light me-2">Buscar por Nome</button></a>
+                        <a href="/searchEvent"><button type="button" class="btn btn-outline-light md-2">Buscar por Evento</button></a>
                     </div>
                     </div>
                 </div>
